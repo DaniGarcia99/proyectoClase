@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Estilos en la hoja CSS">
+<svg xmlns="https://picsum.photos/200/300?grayscale" viewBox="0 0 1200 640" role="img" aria-label="Estilos en la hoja CSS">
   <defs>
     <linearGradient id="bg2" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="#adf1d1"/>
@@ -7,9 +7,5 @@
   </defs>
   <rect width="1200" height="640" fill="url(#bg2)"/>
   <rect x="220" y="110" width="760" height="420" rx="18" fill="#16332a"/>
-  <text x="270" y="180" font-family="Consolas, monospace" font-size="28" fill="#7ed3c1">style.css</text>
-  <text x="270" y="250" font-family="Consolas, monospace" font-size="24" fill="#d8fff0">header { position: sticky; }</text>
-  <text x="270" y="310" font-family="Consolas, monospace" font-size="24" fill="#d8fff0">.carousel { overflow: hidden; }</text>
-  <text x="270" y="370" font-family="Consolas, monospace" font-size="24" fill="#d8fff0">form { display: grid; }</text>
-  <text x="270" y="450" font-family="Consolas, monospace" font-size="24" fill="#5aa9c8">/* todo el diseño aquí */</text>
+  
 </svg>
