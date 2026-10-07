@@ -1,86 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('partials/head') %>
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <div class="navbar-logo">
-          <a href="/"><strong>2DAW</strong></a>
+    <%- include('partials/header') %>
+
+    <main class="page-content">
+      <section id="inicio" class="hero">
+        <p class="eyebrow">Proyecto de clase · 2DAW</p>
+        <h1>Una web clara, ordenada y lista para crecer</h1>
+        <p class="lead">
+          Esta página presenta el trabajo de clase: estructura semántica, estilos
+          separados y componentes reutilizables. El objetivo es practicar cómo
+          se organiza un sitio real, no dejar todo mezclado en un solo archivo.
+        </p>
+      </section>
+
+      <section id="proyecto" class="intro">
+        <h2>Sobre el proyecto</h2>
+        <p>
+          He reconstruido el sitio desde cero para que cada pieza viva donde le
+          corresponde: las vistas en EJS, la cabecera y el pie en parciales, los
+          estilos en la hoja CSS y el comportamiento del carrusel en JavaScript.
+        </p>
+        <p>
+          En el cuerpo encontrarás esta presentación, una galería con carrusel
+          de imágenes y un formulario de contacto para enviar consultas.
+        </p>
+      </section>
+
+      <section id="galeria" class="gallery">
+        <h2>Galería</h2>
+        <p class="section-lead">Un recorrido visual por las ideas del proyecto.</p>
+
+        <div class="carousel" data-carousel>
+          <div class="carousel-viewport">
+            <ul class="carousel-track">
+              <li class="carousel-slide is-active">
+                <img src="/images/slide-1.svg" alt="Planificación y estructura del proyecto">
+                <p class="carousel-caption">Estructura: cabecera, contenido y pie</p>
+              </li>
+              <li class="carousel-slide">
+                <img src="/images/slide-2.svg" alt="Diseño visual y estilos">
+                <p class="carousel-caption">Estilos centralizados en la hoja CSS</p>
+              </li>
+              <li class="carousel-slide">
+                <img src="/images/slide-3.svg" alt="Formulario de contacto">
+                <p class="carousel-caption">Contacto para hablar del proyecto</p>
+              </li>
+            </ul>
+          </div>
+          <div class="carousel-controls">
+            <button type="button" class="carousel-btn" data-carousel-prev aria-label="Imagen anterior">‹</button>
+            <div class="carousel-dots" data-carousel-dots></div>
+            <button type="button" class="carousel-btn" data-carousel-next aria-label="Imagen siguiente">›</button>
+          </div>
         </div>
-        <ul class="navbar-menu">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/sobre">Sobre Nosotros</a></li>
-          <li><a href="/servicios">Servicios</a></li>
-          <li><a href="/contacto">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
-    <style>
-      header {
-        background: rgba(255,255,255,0.9);
-        box-shadow: 0 2px 8px rgba(30,80,75,.04), 0 1.5px 7px -2px #7ed3c1;
-        padding: 0;
-        margin-bottom: 2rem;
-      }
-      .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 1.1rem 2rem 1.1rem 2rem;
-      }
-      .navbar-logo a {
-        font-size: 1.7em;
-        color: #5aa9c8;
-        text-decoration: none;
-        font-weight: bold;
-        letter-spacing: 0.03em;
-      }
-      .navbar-menu {
-        list-style: none;
-        display: flex;
-        gap: 2rem;
-        margin: 0;
-        padding: 0;
-      }
-      .navbar-menu li {
-        display: inline;
-      }
-      .navbar-menu a {
-        color: #16332a;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1em;
-        letter-spacing: 0.01em;
-        padding: 0.3em 0.6em;
-        border-radius: 3px;
-        transition: background 0.18s, color 0.18s;
-      }
-      .navbar-menu a:hover, .navbar-menu a:focus {
-        background: #d8fff0;
-        color: #0077a8;
-      }
-      @media (max-width: 650px) {
-        .navbar {
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .navbar-menu {
-          flex-direction: column;
-          gap: 0.7rem;
-          width: 100%;
-          align-items: flex-start;
-        }
-      }
-    </style>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <footer>
-      <p>&copy; <%= new Date().getFullYear() %>. "2DAW. Todos los derechos reservados."</p>
-    </footer>
+      </section>
+
+      <section id="contacto" class="contact">
+        <h2>Contacto</h2>
+        <p class="section-lead">¿Tienes una duda o una sugerencia? Escríbeme y te responderé.</p>
+
+        <% if (typeof enviado !== 'undefined' && enviado) { %>
+          <p class="form-success" role="status">Mensaje enviado. Gracias por ponerte en contacto.</p>
+        <% } %>
+
+        <form class="contact-form" action="/contacto" method="post">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required maxlength="80" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required maxlength="120" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required maxlength="1000"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Enviar mensaje</button>
+        </form>
+      </section>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script src="/javascripts/main.js"></script>
   </body>
 </html>
